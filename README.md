@@ -47,6 +47,34 @@ Confusion matrix: 7,472 true negatives, 513 false positives, 617 false negatives
 
 Including completed call duration raises ROC AUC to 0.910 and F1 to 0.585, but this version cannot rank customers before agents call them. It should be labeled as a post-call diagnostic model.
 
+## Visualizations
+
+All figures below are generated reproducibly by `bank_term_deposit_model_audit.py` from the dataset and leakage-aware audit results.
+
+### Target class imbalance
+
+Only 11.7% of customers subscribed to a term deposit. This imbalance explains why accuracy alone can overstate practical model quality.
+
+![Target class distribution](./images/01_target_class_distribution.png)
+
+### Pre-call and post-call model comparison
+
+The post-call diagnostic model scores higher because it includes completed call duration. That comparison is useful for diagnosis, but only the pre-call model is suitable for ranking customers before a campaign.
+
+![Leakage-aware model comparison](./images/02_model_comparison.png)
+
+### Pre-call confusion matrix
+
+At the validation-selected threshold of 0.6465, the pre-call model produces 7,472 true negatives, 513 false positives, 617 false negatives, and 441 true positives on the untouched test split.
+
+![Pre-call model confusion matrix](./images/03_pre_call_confusion_matrix.png)
+
+### Decision-threshold trade-off
+
+Moving from the default threshold to the validation-selected threshold improves positive-class precision and F1 while reducing recall. The production threshold should be chosen using campaign capacity and the relative costs of missed subscribers and unnecessary calls.
+
+![Pre-call threshold trade-off](./images/04_threshold_tradeoff.png)
+
 ## Why SMOTE is not automatically the answer
 
 SMOTE can help some classifiers learn the minority class, but it should be applied only inside each training fold. It must never alter validation or test data. Accuracy is also a weak selection metric for an 88/12 target because a model can achieve high accuracy by predicting mostly `No`.
@@ -85,18 +113,24 @@ Raw campaign data
 ├── bank_term_deposit_model_audit.py
 ├── MODEL_AUDIT.md
 ├── model_audit_results.json
+├── requirements.txt
 ├── train.csv
 ├── test.csv
 ├── test_y.csv
 ├── Target_Customers_Term_Deposit.csv
 ├── Presentation_Bank Term Deposit Predictions .pdf
+├── images/
+│   ├── 01_target_class_distribution.png
+│   ├── 02_model_comparison.png
+│   ├── 03_pre_call_confusion_matrix.png
+│   └── 04_threshold_tradeoff.png
 └── README.md
 ```
 
 ## Run the audit
 
 ```bash
-pip install numpy pandas
+pip install -r requirements.txt
 python bank_term_deposit_model_audit.py
 ```
 
