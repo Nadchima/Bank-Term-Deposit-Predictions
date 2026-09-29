@@ -1,0 +1,85 @@
+{
+  "rows": 45211,
+  "positive_rate": 0.11698480458295547,
+  "split_rows": {
+    "train": 27126,
+    "validation": 9042,
+    "test": 9043
+  },
+  "pre_call_model_without_duration": {
+    "validation_selected_threshold": {
+      "threshold": 0.6465,
+      "accuracy": 0.8699402786994028,
+      "precision_yes": 0.441699604743083,
+      "recall_yes": 0.4224952741020794,
+      "f1_yes": 0.4318840579710145,
+      "roc_auc": 0.7651282006356759,
+      "tp": 447,
+      "fp": 565,
+      "tn": 7419,
+      "fn": 611
+    },
+    "test_at_0_5": {
+      "threshold": 0.5,
+      "accuracy": 0.7650116111909765,
+      "precision_yes": 0.2730752871118673,
+      "recall_yes": 0.6068052930056711,
+      "f1_yes": 0.37665004400117336,
+      "roc_auc": 0.7634214909098227,
+      "tp": 642,
+      "fp": 1709,
+      "tn": 6276,
+      "fn": 416
+    },
+    "test_at_selected_threshold": {
+      "threshold": 0.6465,
+      "accuracy": 0.8750414685392016,
+      "precision_yes": 0.46226415094339623,
+      "recall_yes": 0.4168241965973535,
+      "f1_yes": 0.4383697813121272,
+      "roc_auc": 0.7634214909098227,
+      "tp": 441,
+      "fp": 513,
+      "tn": 7472,
+      "fn": 617
+    }
+  },
+  "diagnostic_model_with_duration": {
+    "validation_selected_threshold": {
+      "threshold": 0.6266,
+      "accuracy": 0.8710462287104623,
+      "precision_yes": 0.4664179104477612,
+      "recall_yes": 0.7088846880907372,
+      "f1_yes": 0.5626406601650413,
+      "roc_auc": 0.9059592483644037,
+      "tp": 750,
+      "fp": 858,
+      "tn": 7126,
+      "fn": 308
+    },
+    "test_at_0_5": {
+      "threshold": 0.5,
+      "accuracy": 0.8514873382726971,
+      "precision_yes": 0.4287856071964018,
+      "recall_yes": 0.8109640831758034,
+      "f1_yes": 0.5609676364825107,
+      "roc_auc": 0.9098711785921855,
+      "tp": 858,
+      "fp": 1143,
+      "tn": 6842,
+      "fn": 200
+    },
+    "test_at_selected_threshold": {
+      "threshold": 0.6266,
+      "accuracy": 0.8811235209554351,
+      "precision_yes": 0.49444807315480077,
+      "recall_yes": 0.7155009451795841,
+      "f1_yes": 0.5847817690227887,
+      "roc_auc": 0.9098711785921855,
+      "tp": 757,
+      "fp": 774,
+      "tn": 7211,
+      "fn": 301
+    }
+  }
+}
